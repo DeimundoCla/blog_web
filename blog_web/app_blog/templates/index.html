@@ -28,7 +28,7 @@
                         <p class="post-meta">
                             Posteado por
                             <a href="#!">{{ x.autor.first_name }} {{ x.autor.last_name }}</a><br/>
-                            el {{ x.fecha_publicacion }}
+                            el {{ x.fecha_publicacion }} - <a href="{% url 'editarpost' x.pk %}">|Editar post|</a>
                         </p>
                         <hr class="my-4" />
                     {% endfor %}

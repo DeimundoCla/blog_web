@@ -1,8 +1,7 @@
 {%extends 'main.html'%}
+{% block title %}{{ posteo.titulo }} {% endblock %}
 {%load static%}
 {%block contenido%}
-{% block title %}{{ posteo.titulo }} {% endblock %}
-
 <header class="post">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -14,6 +13,8 @@
                         Posteado por
                         <a href="#!">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</a>
                         el {{ posteo.fecha_publicacion }}
+                        <br/>
+                        <a href="{% url 'editarpost' posteo.pk %}">|Editar post|</a> - <a href="{% url 'eliminarpost' posteo.pk %}">|Borrar|</a>
                     </span>
                 </div>
             </div>

@@ -8,6 +8,7 @@ from .forms import PosteoForm
 class Home(ListView):
     model = Posteo
     template_name = 'index.html'
+    ordering = ['-fecha_publicacion']
 
 class Vistaposteo(DetailView):
     model = Posteo
@@ -16,4 +17,14 @@ class Vistaposteo(DetailView):
 class Cargapost(CreateView):
     model = Posteo
     form_class = PosteoForm
-    template_name = 'carga_post.html' 
+    template_name = 'carga_post.html'
+
+class Editarposteo(UpdateView):
+    model = Posteo
+    template_name = 'editar_post.html'
+    fields = ['titulo', 'subtitulo', 'contenido', 'imagen']
+
+class Eliminarposteo(DeleteView):
+    model = Posteo
+    template_name = 'eliminar_post.html'
+    success_url = '/'
