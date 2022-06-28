@@ -11114,6 +11114,7 @@ footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+    /* -------------------------------------------INDEX BG CFG------------------------------------------------ */
 
 header.index {
   position: relative;
@@ -11184,8 +11185,8 @@ header.index .post-heading .meta a {
 }
 @media (min-width: 992px) {
   header.index {
-    padding-top: 12.5rem;
-    padding-bottom: 12.5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
   header.index .page-heading h1, header.index .page-heading .h1,
 header.index .site-heading h1,
@@ -11244,6 +11245,7 @@ header.index .site-heading .h1 {
   .post-preview > a > .post-title {
     font-size: 2.25rem;
   }
+    /* -------------------------------------------POST BG CFG------------------------------------------------ */
 }
 header.post {
   position: relative;
@@ -11333,5 +11335,259 @@ header.post .post-heading .meta a {
     .cascading-right {
       margin-right: 0;
     }
+     /* -------------------------------------------ABOUT BG CFG------------------------------------------------ */
   }
-  
+  header.about {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-top: calc(8rem + 45px);
+    padding-bottom: 8rem;
+    background: no-repeat center center;
+    background-color: #6c757d;
+    background-size: cover;
+    background-attachment: scroll;
+    background-image: url("../assets/img/about-bg.jpg");
+  }
+  header.about:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #212529;
+    opacity: 0.5;
+  }
+  header.about .page-heading,
+  header.about .post-heading,
+  header.about .site-heading {
+    color: #fff;
+  }
+  header.about .page-heading,
+  header.about .site-heading {
+    text-align: center;
+  }
+  header.about .page-heading h1, header.about .page-heading .h1,
+  header.about .site-heading h1,
+  header.about .site-heading .h1 {
+    font-size: 3rem;
+  }
+  header.about .page-heading .subheading,
+  header.about .site-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin-top: 0.625rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.about .post-heading h1, header.about .post-heading .h1 {
+    font-size: 2.25rem;
+  }
+  header.about .post-heading .meta,
+  header.about .post-heading .subheading {
+    line-height: 1.1;
+    display: block;
+  }
+  header.about .post-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.75rem 0 2rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.about .post-heading .meta {
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.about .post-heading .meta a {
+    color: #fff;
+  }
+  @media (min-width: 992px) {
+    header.about {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+    header.about .page-heading h1, header.about .page-heading .h1,
+  header.about .site-heading h1,
+  header.about .site-heading .h1 {
+      font-size: 5rem;
+    }
+    header.about .post-heading h1, header.about .post-heading .h1 {
+      font-size: 3.5rem;
+    }
+    header.about .post-heading .subheading {
+      font-size: 1.875rem;
+    }
+  /* -------------------------------------------LOGIN / REGISTER BG CFG---------------------------------------- */
+  }
+  header.log {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-top: calc(8rem + 45px);
+    padding-bottom: 8rem;
+    background: no-repeat center center;
+    background-color: #6c757d;
+    background-size: cover;
+    background-attachment: scroll;
+    background-image: url("../assets/img/log-bg.jpg");
+  }
+  header.log:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #212529;
+    opacity: 0.5;
+  }
+  header.log .page-heading,
+  header.log .post-heading,
+  header.log .site-heading {
+    color: #fff;
+  }
+  header.log .page-heading,
+  header.log .site-heading {
+    text-align: center;
+  }
+  header.log .page-heading h1, header.log .page-heading .h1,
+  header.log .site-heading h1,
+  header.log .site-heading .h1 {
+    font-size: 3rem;
+  }
+  header.log .page-heading .subheading,
+  header.log .site-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin-top: 0.625rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.log .post-heading h1, header.log .post-heading .h1 {
+    font-size: 2.25rem;
+  }
+  header.log .post-heading .meta,
+  header.log .post-heading .subheading {
+    line-height: 1.1;
+    display: block;
+  }
+  header.log .post-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.75rem 0 2rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.log .post-heading .meta {
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.log .post-heading .meta a {
+    color: #fff;
+  }
+  @media (min-width: 992px) {
+    header.log {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+    header.log .page-heading h1, header.log .page-heading .h1,
+  header.log .site-heading h1,
+  header.log .site-heading .h1 {
+      font-size: 5rem;
+    }
+    header.log .post-heading h1, header.log .post-heading .h1 {
+      font-size: 3.5rem;
+    }
+    header.log .post-heading .subheading {
+      font-size: 1.875rem;
+    }
+  }
+    /* -------------------------------------------CARGAR POST BG CFG---------------------------------------- */
+  header.write {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-top: calc(8rem + 45px);
+    padding-bottom: 8rem;
+    background: no-repeat center center;
+    background-color: #6c757d;
+    background-size: cover;
+    background-attachment: scroll;
+    background-image: url("../assets/img/write-bg.jpg");
+  }
+  header.write:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #212529;
+    opacity: 0.5;
+  }
+  header.write .page-heading,
+  header.write .post-heading,
+  header.write .site-heading {
+    color: #fff;
+  }
+  header.write .page-heading,
+  header.write .site-heading {
+    text-align: center;
+  }
+  header.write .page-heading h1, header.write .page-heading .h1,
+  header.write .site-heading h1,
+  header.write .site-heading .h1 {
+    font-size: 3rem;
+  }
+  header.write .page-heading .subheading,
+  header.write .site-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin-top: 0.625rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.write .post-heading h1, header.write .post-heading .h1 {
+    font-size: 2.25rem;
+  }
+  header.write .post-heading .meta,
+  header.write .post-heading .subheading {
+    line-height: 1.1;
+    display: block;
+  }
+  header.write .post-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.75rem 0 2rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.write .post-heading .meta {
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.write .post-heading .meta a {
+    color: #fff;
+  }
+  @media (min-width: 992px) {
+    header.write {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+    header.write .page-heading h1, header.write .page-heading .h1,
+  header.write .site-heading h1,
+  header.write .site-heading .h1 {
+      font-size: 5rem;
+    }
+    header.write .post-heading h1, header.write .post-heading .h1 {
+      font-size: 3.5rem;
+    }
+    header.write .post-heading .subheading {
+      font-size: 1.875rem;
+    }
+  }

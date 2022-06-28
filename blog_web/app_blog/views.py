@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Posteo
 from .forms import PosteoForm
-
+from django.http import HttpResponse
+from django.template import loader
 # Create your views here.
 
 class Home(ListView):
@@ -28,3 +29,14 @@ class Eliminarposteo(DeleteView):
     model = Posteo
     template_name = 'eliminar_post.html'
     success_url = '/'
+
+
+def about(request):
+    template = loader.get_template("about.html")
+    documento = template.render()
+    return HttpResponse(documento)
+
+def error(request):
+    template = loader.get_template("404.html")
+    documento = template.render()
+    return HttpResponse(documento)
