@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block contenido %}
+{% if user.is_authenticated %}
 <title>Blogsito - Post</title>
 <header class="post">
     <div class="container position-relative px-4 px-lg-5">
@@ -26,5 +27,18 @@
         </div>
     </div>
 </article>
+{% else %}
+<html>
+    <head>
+        <title>HTML Meta Tag</title>
+        <meta http-equiv = "refresh" content = "2; url = /" />
+    </head>
+    <body>
+        <h1> FORBIDDEN</h1>
+    </body>
+</html>
+
+{% endif %}
+
     
 {% endblock %}

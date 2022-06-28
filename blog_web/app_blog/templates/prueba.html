@@ -1,0 +1,9 @@
+<h1> Posteos </h1>
+
+<ul>
+{% for post in object_list %}
+    <li>{{ post.titulo }} - {{ post.autor }} <br/>
+    {{ post.contenido }}
+    <br/>
+    {{ post.imagen }}
+{% endfor %}

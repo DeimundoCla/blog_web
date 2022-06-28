@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
     <head>
-        {%load static%}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -27,11 +27,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'index'%}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'cargapost'%}">Cargar post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'registro'%}">Registrarse</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'login'%}">Ingresar</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'about'%}">About</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'index'%}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'cargapost'%}">Cargar post</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'cargacategoria'%}">Nueva categoría</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'logout'%}">Logout</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'index'%}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'registro'%}">Registrarse</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'login'%}">Ingresar</a></li>
+                        {% endif %}                   
                     </ul>
                 </div>
             </div>
@@ -40,8 +45,3 @@
 {%block contenido%}
 
 {%endblock%}
-
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>

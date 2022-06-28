@@ -15,7 +15,9 @@
                         <a href="#!">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</a>
                         el {{ posteo.fecha_publicacion }}
                         <br/>
-                        <a href="{% url 'editarpost' posteo.pk %}">|Editar post|</a> - <a href="{% url 'eliminarpost' posteo.pk %}">|Borrar|</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'editarpost' posteo.url %}">|Editar post|</a> - <a href="{% url 'eliminarpost' posteo.url  %}">|Borrar|</a>
+                        {% endif %}
                     </span>
                 </div>
             </div>

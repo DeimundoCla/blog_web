@@ -23,14 +23,17 @@
                     <!-- Post preview-->
                     {% for x in object_list %}
                     <div class="post-preview">
-                        <a href="{% url 'post' x.pk %}">
+                        <a href="{% url 'post' x.url %}">
                             <h2 class="post-title"> {{ x.titulo }} </h2>
                             <h3 class="post-subtitle"> {{ x.subtitulo }} </h3>
                         </a>
                         <p class="post-meta">
                             Posteado por
                             <a href="#!">{{ x.autor.first_name }} {{ x.autor.last_name }}</a><br/>
-                            el {{ x.fecha_publicacion }} - <a href="{% url 'editarpost' x.pk %}">|Editar post|</a>
+                            el {{ x.fecha_publicacion }} - <a href="{% url 'categoria' x.categoria %} ">{{ x.categoria }}</a>
+                            {% if user.is_authenticated %}
+                                - <a href="{% url 'editarpost' x.url %}">|Editar post|</a>
+                            {% endif %}
                         </p>
                         <hr class="my-4" />
                     {% endfor %}
