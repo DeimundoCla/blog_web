@@ -12,32 +12,33 @@
     </div>
 </header>
 <!-- Post Content-->
-<article class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <h1> Eliminar posteo </h1>
-                <h3> Está a punto de borrar el post: "{{ posteo.titulo }}"</h3>
-                <h6><form method="POST">
-                    {% csrf_token %}
-                </h6>
-                <h3> ¿Está seguro de eliminar el posteo? "{{ posteo.titulo }}"</h3>
-                <button class="btn btn-secondary">Presione el botón para borrar el post</button>
+    {% if user.id == posteo.autor.id %}}
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <h1> Eliminar posteo </h1>
+                    <h3> Está a punto de borrar el post: "{{ posteo.titulo }}"</h3>
+                    <h6><form method="POST">
+                        {% csrf_token %}
+                    </h6>
+                    <h3> ¿Está seguro de eliminar el posteo? "{{ posteo.titulo }}"</h3>
+                    <button class="btn btn-secondary">Presione el botón para borrar el post</button>
+                </div>
             </div>
         </div>
-    </div>
-</article>
-{% else %}
-<html>
-    <head>
-        <title>HTML Meta Tag</title>
-        <meta http-equiv = "refresh" content = "2; url = /" />
-    </head>
-    <body>
-        <h1> FORBIDDEN</h1>
-    </body>
-</html>
-
+    </article>
+    {% else %}
+    <html>
+        <head>
+            <title>HTML Meta Tag</title>
+            <meta http-equiv = "refresh" content = "2; url = /" />
+        </head>
+        <body>
+            <h1> FORBIDDEN</h1>
+        </body>
+    </html>
+    {% endif %}
 {% endif %}
 
     

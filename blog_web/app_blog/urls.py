@@ -11,4 +11,5 @@ urlpatterns = [
     path('404', error , name="404"),
     path('categorias/<str:cate>/', ViewCategoria, name='categoria'),
     path('carga_categoria/', CargaCategoria.as_view(), name='cargacategoria'),
+    path('like/<slug:url>', LikeView, name='like_post'),
 ]

@@ -15,8 +15,14 @@
                         <a href="#!">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</a>
                         el {{ posteo.fecha_publicacion }}
                         <br/>
+                        <br/>
                         {% if user.is_authenticated %}
-                            <a href="{% url 'editarpost' posteo.url %}">|Editar post|</a> - <a href="{% url 'eliminarpost' posteo.url  %}">|Borrar|</a>
+                            <form action="{% url 'like_post' posteo.url %}" method="POST">
+                                {% csrf_token %}
+                                    <button type="submit", name='posteo_id' class="btn btn-primary", value={{ posteo.url }}>Me gusta</button> - Likes {{ likes_totales }}
+                                        {% if user.id == posteo.autor.id %}
+                                            <a href="{% url 'editarpost' posteo.url %}">|Editar post|</a> - <a href="{% url 'eliminarpost' posteo.url  %}">|Borrar|</a>
+                                        {% endif %}
                         {% endif %}
                     </span>
                 </div>
@@ -29,7 +35,7 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                {{posteo.contenido }}
+                {{ posteo.contenido|safe }}
             </div>
         </div>
     </div>

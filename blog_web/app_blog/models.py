@@ -2,14 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.text import slugify
-# Create your models here.
+from ckeditor.fields import RichTextField
+
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nome
-            
+
     def get_absolute_url(self):
         return reverse('index')
 
@@ -18,10 +19,14 @@ class Posteo(models.Model):
     subtitulo = models.CharField(max_length=120)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
-    contenido = models.TextField()
+    contenido = RichTextField(blank=True, null=True)
     imagen = models.ImageField(upload_to='blog/images', blank=True)
     categoria = models.CharField(max_length=100, default='General')
     url = models.SlugField(max_length=264, unique=True, null=True)
+    likes = models.ManyToManyField(User, related_name='like', blank=True)
+
+    def likes_totales(self):
+        return self.likes.count()
 
     def __str__(self):
         return self.titulo + ' | ' + str(self.autor)

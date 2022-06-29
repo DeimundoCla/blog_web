@@ -19,6 +19,7 @@
                 <h1> Agregar nuevo post </h1>
                 <h6><form method="POST">
                     {% csrf_token %}
+                    {{ form.media }}
                     {{ form.as_p }}
                 </h6>
                 <button class="btn btn-secondary">Post</button>

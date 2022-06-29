@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Posteo, Categoria
 from .forms import PosteoForm
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import loader
+from django.urls import reverse
 # Create your views here.
 
 class Home(ListView):
@@ -16,6 +18,14 @@ class Vistaposteo(DetailView):
     template_name = 'post.html'
     slug_field = 'url'
     slug_url_kwarg = 'url'
+
+    def get_context_data(self, **kwargs):
+        context = super(Vistaposteo, self).get_context_data(**kwargs)
+
+        likes = get_object_or_404(Posteo, url=self.kwargs['url'])
+        likes_tot = likes.likes_totales()
+        context['likes_totales'] = likes_tot
+        return context
 
 class CargaCategoria(CreateView):
     model = Categoria
@@ -55,3 +65,8 @@ def error(request):
 def ViewCategoria(request, cate):
     post_cats = Posteo.objects.filter(categoria = cate.replace('-', ' '))
     return render(request, 'categorias.html', {'cate': cate.title().replace('-', ' '), 'post_cats': post_cats})
+
+def LikeView(request, url):
+    post = get_object_or_404(Posteo, url=request.POST.get('posteo_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('post', kwargs={'url': url}))

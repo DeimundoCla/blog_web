@@ -32,7 +32,9 @@
                             <a href="#!">{{ x.autor.first_name }} {{ x.autor.last_name }}</a><br/>
                             el {{ x.fecha_publicacion }} - <a href="{% url 'categoria' x.categoria %} ">{{ x.categoria }}</a>
                             {% if user.is_authenticated %}
+                                {% if user.id == x.autor.id %}
                                 - <a href="{% url 'editarpost' x.url %}">|Editar post|</a>
+                                {% endif %}
                             {% endif %}
                         </p>
                         <hr class="my-4" />
