@@ -1,0 +1,71 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block contenido %}
+<title>Blogsito - Editar perfil</title>
+<header class="log">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Section: Design Block -->
+<section class=" text-center text-lg-start">
+    <style>
+      .rounded-t-5 {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+  
+      @media (min-width: 992px) {
+        .rounded-tr-lg-0 {
+          border-top-right-radius: 0;
+        }
+  
+        .rounded-bl-lg-5 {
+          border-bottom-left-radius: 0.5rem;
+        }
+      }
+    </style>
+    <div class="card mb-3">
+      <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-4 d-none d-lg-flex">
+          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
+            class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+        </div>
+        <div class="col-lg-8">
+          <div class="card-body py-5 px-md-5">
+<!-- Post Content-->
+{% if user.is_authenticated %}
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h1> Editar perfil: </h1>
+                <h6><form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </h6>
+                <button class="btn btn-secondary" class="btn btn-primary btn-block mb-4"style="font-family: 'Lora';"font-style: italic;>Guardar</button>
+                <br/>
+                <br/>
+                <h6><a href="{%url 'password'%}"> Para cambiar su contraseña haga click aquí</a></h6>
+            </div>
+        </div>
+    </div>
+</article>
+{% else %}
+<html>
+    <head>
+        <title>HTML Meta Tag</title>
+        <meta http-equiv = "refresh" content = "2; url = /" />
+    </head>
+    <body>
+        <h1> FORBIDDEN</h1>
+    </body>
+</html>
+{% endif %}
+
+    
+{% endblock %}
