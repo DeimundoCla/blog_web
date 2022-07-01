@@ -1,6 +1,6 @@
 from logging import PlaceHolder
 from django import forms
-from .models import Posteo, Categoria
+from .models import Posteo, Categoria, Perfil
 
 opciones = Categoria.objects.all().values_list('nome', 'nome')
 op = []
@@ -21,3 +21,8 @@ class PosteoForm(forms.ModelForm):
             'autor': forms.Select(attrs={'class': 'form-control'}),
             
         }
+
+class PerfilForm(forms.ModelForm):
+    class Meta:
+        model = Perfil
+        fields = ['info', 'imagen', 'sitio_web', 'instagram_url', 'twitter_url', 'facebook_url',]

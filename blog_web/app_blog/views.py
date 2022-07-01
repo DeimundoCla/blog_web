@@ -1,11 +1,13 @@
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Posteo, Categoria
-from .forms import PosteoForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
+from .models import Perfil, Posteo, Categoria
+from .forms import PosteoForm, PerfilForm
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 class Home(ListView):
@@ -50,6 +52,12 @@ class Eliminarposteo(DeleteView):
     success_url = '/'
     slug_field = 'url'
     slug_url_kwarg = 'url'
+
+class PerfilUsuario(DetailView):
+    model = Perfil
+    template_name = 'perfil.html'
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
 
 
 def about(request):

@@ -2,58 +2,11 @@
 {% block title %}{{ posteo.titulo }} {% endblock %}
 {%load static%}
 {%block contenido%}
-<title>Blogsito - Post</title>
+<title>Blogsito - Perfil {{ XXX }}</title>
 <header class="post">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="post-heading">
-                    <h1>{{ posteo.titulo }}</h1>
-                    <h2 class="subheading"> {{ posteo.subtitulo }} </h2>
-                    <span class="meta">
-                        Posteado por
-                        <a href="#!">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</a>
-                        el {{ posteo.fecha_publicacion }}
-                        <br/>
-                        <br/>
-                        {% if user.is_authenticated %}
-                            <form action="{% url 'like_post' posteo.url %}" method="POST">
-                                {% csrf_token %}
-                                    <button type="submit", name='posteo_id' class="btn btn-primary", value={{ posteo.url }}>Me gusta</button> - Likes {{ likes_totales }}
-                                        {% if user.id == posteo.autor.id %}
-                                            <a href="{% url 'editarpost' posteo.url %}">|Editar post|</a> - <a href="{% url 'eliminarpost' posteo.url  %}">|Borrar|</a>
-                                        {% endif %}
-                        {% endif %}
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Post Content-->
-<article class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                {{ posteo.contenido|safe }}
-            </div>
-        </div>
-    </div>
-
-    <div class="container bcontent" >
-        <h3>Sobre el autor</h3>
-        <hr />
-        <div class="card">
-            <div class="row no-gutters">
-                <div class="col-md-3">
-                    {% if posteo.autor.perfil.imagen %}
-                    <img class="rounded float-right" src="{{ posteo.autor.perfil.imagen.url }}">
-                    {% else %}
-                    <img class="rounded float-right" src="{% static 'app_blog/assets/img/default-user.jpg' %}" width="50%" height="80%">
-                    {% endif %}
-
-
-                </div>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</h5>
@@ -65,13 +18,10 @@
                             <a href="{{ posteo.autor.perfil.facebook_url }}">Facebook</a> | 
                             <a href="{{ posteo.autor.perfil.sitio_web }}">Sitio web</a></small></p>
                     </div>
-                </div>
             </div>
         </div>
     </div>
-
-</article>
-<!-- Footer-->
+</header>
 <footer class="border-top">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">

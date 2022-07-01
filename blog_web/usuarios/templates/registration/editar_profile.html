@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block contenido %}
-<title>Blogsito - Editar Usuario</title>
+<title>Blogsito - Editar Perfil</title>
 <header class="log">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -38,24 +38,21 @@
           <div class="card-body py-5 px-md-5">
 <!-- Post Content-->
 {% if user.is_authenticated %}
-  <article class="mb-4">
+<article class="mb-4">
     <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-          <h1> Editar Usuario: </h1>
-            <h6><form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            </h6>
-            <button class="btn btn-secondary" class="btn btn-primary btn-block mb-4"style="font-family: 'Lora';"font-style: italic;>Guardar</button>
-            <br/>
-            <br/>
-          <h6><a href="{%url 'password'%}"> Para cambiar su contraseña haga click aquí</a></h6>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h1> Editar perfil: </h1>
+                <h6><form method="POST">
+                    {% csrf_token %}
+                    {{ form.media}}
+                    {{ form.as_p }}
+                </h6>
+                <button class="btn btn-secondary" class="btn btn-primary btn-block mb-4"style="font-family: 'Lora';"font-style: italic;>Guardar</button>
+            </div>
         </div>
-      </div>
     </div>
-  </article>
-  
+</article>
 {% else %}
 <html>
     <head>

@@ -31,8 +31,20 @@
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'index'%}">Inicio</a></li>
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'cargapost'%}">Cargar post</a></li>
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'cargacategoria'%}">Nueva categoría</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'editar_perfil'%}">Editar perfil</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'logout'%}">Logout</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Dropdown link
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{%url 'editar_perfil'%}">Editar Perfil</a>
+                                    <a class="dropdown-item" href="{%url 'editar_profile'%}">Editar Usuario</a>
+                                    <a class="dropdown-item" href="{%url 'perfil'%}">Ver Perfil</a>
+                                    <a class="dropdown-item" href="{%url 'logout'%}">Cerrar Sesión</a>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'perfil'%}">Conectado como {{ user }}</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'logout'%}">Cerrar Sesión</a>
+
                         {% else %}
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'index'%}">Inicio</a></li>
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'registro'%}">Registrarse</a></li>
