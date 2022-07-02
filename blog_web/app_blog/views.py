@@ -65,7 +65,7 @@ def about(request):
     documento = template.render()
     return HttpResponse(documento)
 
-def error(request):
+def error404(request):
     template = loader.get_template("404.html")
     documento = template.render()
     return HttpResponse(documento)
@@ -78,3 +78,8 @@ def LikeView(request, url):
     post = get_object_or_404(Posteo, url=request.POST.get('posteo_id'))
     post.likes.add(request.user)
     return HttpResponseRedirect(reverse('post', kwargs={'url': url}))
+
+def error403(request):
+    template = loader.get_template("403.html")
+    documento = template.render()
+    return HttpResponse(documento)
