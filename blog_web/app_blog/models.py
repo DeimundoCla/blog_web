@@ -19,7 +19,7 @@ class Posteo(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
     contenido = RichTextField(blank=True)
-    imagen = models.ImageField(upload_to='images/', blank=True)
+    imagen = models.ImageField(upload_to='images/')
     categoria = models.CharField(max_length=100, default='General')
     url = models.SlugField(max_length=264, unique=True)
     likes = models.ManyToManyField(User, related_name='like', blank=True)

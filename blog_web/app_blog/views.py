@@ -53,13 +53,8 @@ class Eliminarposteo(DeleteView):
     slug_url_kwarg = 'url'
 
 class PerfilUsuario(DetailView):
-    #model = Perfil
-    #template_name = 'perfil.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(PerfilUsuario, self).get_context_data(**kwargs)
-        context['perfil'] = Perfil.objects.all()
-        return context
+    model = Perfil
+    template_name = 'perfil.html'
 
     def get_object(self):
 	    return get_object_or_404(User, pk=self.request.user.id)

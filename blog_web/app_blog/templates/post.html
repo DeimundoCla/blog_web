@@ -36,6 +36,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 {{ posteo.contenido|safe }}
+                <img src ="{{ posteo.imagen.url }}" alt="{{ posteo.titulo }}" class="img-fluid">
             </div>
         </div>
     </div>
@@ -47,7 +48,7 @@
             <div class="row no-gutters">
                 <div class="col-md-3">
                     {% if posteo.autor.perfil.imagen %}
-                    <img class="rounded float-right" src="{{ posteo.autor.perfil.imagen.url }}">
+                    <img class="rounded float-right" src="{{ posteo.autor.perfil.imagen.url }}" width=100% height=70% >
                     {% else %}
                     <img class="rounded float-right" src="{% static 'app_blog/assets/img/default-user.jpg' %}" width="50%" height="80%">
                     {% endif %}
@@ -58,7 +59,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</h5>
                         <p class="card-text">{{ posteo.autor.perfil.info }}</p>
-                        <a href="{%url 'perfil'%}" class="btn btn-primary">Ver perfil completo</a>                    
+                        <a href="{%url 'perfiles'%}" class="btn btn-primary">Ver perfil completo</a>                    
                         <p class="card-text"><small class="text-muted">
                             <a href="{{ posteo.autor.perfil.instagram_url }}">Instagram</a> | 
                             <a href=" {{ posteo.autor.perfil.twitter_url }}">Twitter</a> | 
