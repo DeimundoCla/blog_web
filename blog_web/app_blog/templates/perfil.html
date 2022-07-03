@@ -1,77 +1,83 @@
 {%extends 'main.html'%}
 {%load static%}
 {%block contenido%}
-<title>Blogsito - Perfil {{ user.id }} {{ user.last_name }}</title>
-<header class="post">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
-                        <p class="card-text">{{ perfil.info }}</p>
-                        <a href="{%url 'perfiles'%}" class="btn btn-primary">Ver perfil completo</a>                    
-                        <p class="card-text"><small class="text-muted">
-                            <a href="{{ user.instagram_url }}">Instagram</a> | 
-                            <a href=" {{ user.twitter_url }}">Twitter</a> | 
-                            <a href="{{ user.facebook_url }}">Facebook</a> | 
-                            <a href="{{ user.sitio_web }}">Sitio web</a></small></p>
-                    </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Main Content-->
-<div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <!-- Post preview-->
-            <div class="post-preview">
-                <h2 class="post-title"> {{ user.first_name }} {{ user.last_name }}  </h2>
-                        <h3 class="post-subtitle"> {{ user.email }} </h3>
-                    </a>
-                    <p class="post-meta">
-                        Posteado por
-                        <a href="#!"></a><br/>
-            </div>
-                       
-        </div>
-    </div>  
-</div>
-<footer class="border-top">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <ul class="list-inline text-center">
-                    <li class="list-inline-item">
-                        <a href="#!">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#!">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#!">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
-            </div>
-        </div>
-    </div>
-</footer>
+{% if user.is_authenticated %}
 
+
+<title>Blogsito - {{ user.first_name }} {{ user.last_name }}</title>
+<link href="{% static 'app_blog/css/stylesprofile.css'%}" rel="stylesheet" />
+<header class="about"> 
+</header>
+  <body>
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+        </div>
+        <!--- USER FOTO -->
+	  		<div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+	  			<div class="user-logo">
+	  				<div class="img">{{perfiles.imagen}}</div>
+	  				<h3>{{ user.first_name }} {{ user.last_name }} </h3>
+	  			</div>
+	  		</div>
+
+        <!---------------->
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a href="{%url 'index'%}"><span class="fa fa-home mr-3"></span> Inbox </a>
+          </li>
+          <li>
+            <a href="{%url 'editar_perfil'%}"><span class="fa fa-trophy mr-3"></span> Editar Usuario</a>
+          </li>
+          <li>
+            <a href="{%url 'password'%}"><span class="fa fa-cog mr-3"></span> Editar Contraseña</a>
+          </li>
+          <li>
+            <a href="{%url 'password'%}"><span class="fa fa-support mr-3"></span> Soporte</a>
+          </li>
+          <li>
+            <a href="{%url 'logout'%}"><span class="fa fa-sign-out mr-3"></span> Cerrar sesion</a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <h2 class="post-title"> {{ user.first_name }} {{ user.last_name }}  </h2>
+                                <h3 class="post-subtitle"> {{ user.email }} </h3>
+                            </a>
+                            <div>
+                                <div>                         
+                                    <p >{{ perfil.info }}</p> 
+                                           
+                                         
+                                    <p >
+                                        <a href="{{ perfiles.instagram_url }}">Instagram</a> | 
+                                        <a href=" {{ perfil.twitter_url }}">Twitter</a> | 
+                                        <a href="{{ perfil.facebook_url }}">Facebook</a> | 
+                                        <a href="{{ perfil.sitio_web }}">Sitio web</a></small>
+                                    </p>         
+                                </div>
+                            </div>
+                    </div>
+                            
+                </div>
+            </div>  
+        </div>
+      
+                </div>
+        </body>
+        <footer>
+            
+        </footer>
+        </html>
+        {%else%}
+        {url 'login'}
+        {%endif%}
 {%endblock%}

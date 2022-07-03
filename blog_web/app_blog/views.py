@@ -53,12 +53,9 @@ class Eliminarposteo(DeleteView):
     slug_url_kwarg = 'url'
 
 class PerfilUsuario(DetailView):
-    model = Perfil
     template_name = 'perfil.html'
-
     def get_object(self):
 	    return get_object_or_404(User, pk=self.request.user.id)
-
  
 
 class AboutView(TemplateView):
@@ -85,7 +82,7 @@ class CargaComentario(CreateView):
     def get_success_url(self):
         return reverse('post', kwargs={'url': self.object.post.url})
  
-def error(request):
+def error404(request):
     template = loader.get_template("404.html")
     documento = template.render()
     return HttpResponse(documento)
@@ -98,3 +95,8 @@ def LikeView(request, url):
     post = get_object_or_404(Posteo, url=request.POST.get('posteo_id'))
     post.likes.add(request.user)
     return HttpResponseRedirect(reverse('post', kwargs={'url': url}))
+
+def error403(request):
+    template = loader.get_template("403.html")
+    documento = template.render()
+    return HttpResponse(documento)
