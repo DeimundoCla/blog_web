@@ -1,27 +1,43 @@
 {%extends 'main.html'%}
-{% block title %}{{ posteo.titulo }} {% endblock %}
 {%load static%}
 {%block contenido%}
-<title>Blogsito - Perfil {{ XXX }}</title>
+<title>Blogsito - Perfil {{ user.id }} {{ user.last_name }}</title>
 <header class="post">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</h5>
-                        <p class="card-text">{{ posteo.autor.perfil.info }}</p>
-                        <a href="{%url 'perfil'%}" class="btn btn-primary">Ver perfil completo</a>                    
+                        <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                        <p class="card-text">{{ perfil.info }}</p>
+                        <a href="{%url 'perfiles'%}" class="btn btn-primary">Ver perfil completo</a>                    
                         <p class="card-text"><small class="text-muted">
-                            <a href="{{ posteo.autor.perfil.instagram_url }}">Instagram</a> | 
-                            <a href=" {{ posteo.autor.perfil.twitter_url }}">Twitter</a> | 
-                            <a href="{{ posteo.autor.perfil.facebook_url }}">Facebook</a> | 
-                            <a href="{{ posteo.autor.perfil.sitio_web }}">Sitio web</a></small></p>
+                            <a href="{{ user.instagram_url }}">Instagram</a> | 
+                            <a href=" {{ user.twitter_url }}">Twitter</a> | 
+                            <a href="{{ user.facebook_url }}">Facebook</a> | 
+                            <a href="{{ user.sitio_web }}">Sitio web</a></small></p>
                     </div>
             </div>
         </div>
     </div>
 </header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview">
+                <h2 class="post-title"> {{ user.first_name }} {{ user.last_name }}  </h2>
+                        <h3 class="post-subtitle"> {{ user.email }} </h3>
+                    </a>
+                    <p class="post-meta">
+                        Posteado por
+                        <a href="#!">{{ perfil.info }} {{ perfil.imagen }}</a><br/>
+            </div>
+                       
+        </div>
+    </div>  
+</div>
 <footer class="border-top">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">

@@ -1,6 +1,5 @@
-from logging import PlaceHolder
 from django import forms
-from .models import Posteo, Categoria, Perfil
+from .models import Comentarios, Posteo, Categoria, Perfil
 
 opciones = Categoria.objects.all().values_list('nome', 'nome')
 op = []
@@ -26,3 +25,11 @@ class PerfilForm(forms.ModelForm):
     class Meta:
         model = Perfil
         fields = ['info', 'imagen', 'sitio_web', 'instagram_url', 'twitter_url', 'facebook_url',]
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentarios
+        fields = ['cuerpo', 'usuario', 'post']
+
+
+

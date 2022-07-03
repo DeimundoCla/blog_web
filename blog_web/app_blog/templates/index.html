@@ -29,7 +29,7 @@
                         </a>
                         <p class="post-meta">
                             Posteado por
-                            <a href="#!">{{ x.autor.first_name }} {{ x.autor.last_name }}</a><br/>
+                            <a href="{% url 'perfiles'%}">{{ x.autor.first_name }} {{ x.autor.last_name }}</a><br/>
                             el {{ x.fecha_publicacion }} - <a href="{% url 'categoria' x.categoria %} ">{{ x.categoria }}</a>
                             {% if user.is_authenticated %}
                                 {% if user.id == x.autor.id %}

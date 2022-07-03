@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from .models import Perfil, Posteo, Categoria
-from .forms import PosteoForm, PerfilForm
-from django.contrib.auth.models import User
+from hitcount.views import HitCountDetailView
+from .models import Posteo, Categoria, Perfil, Comentarios
+from .forms import ComentarioForm, PosteoForm
+from usuarios.forms import User
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-from django.contrib.auth.forms import UserCreationForm
+
 # Create your views here.
 
 class Home(ListView):
@@ -23,12 +24,11 @@ class Vistaposteo(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(Vistaposteo, self).get_context_data(**kwargs)
-
         likes = get_object_or_404(Posteo, url=self.kwargs['url'])
         likes_tot = likes.likes_totales()
         context['likes_totales'] = likes_tot
         return context
-
+    
 class CargaCategoria(CreateView):
     model = Categoria
     template_name = 'carga_categoria.html'
@@ -54,17 +54,43 @@ class Eliminarposteo(DeleteView):
     slug_url_kwarg = 'url'
 
 class PerfilUsuario(DetailView):
-    model = Perfil
-    template_name = 'perfil.html'
-    slug_field = 'username'
-    slug_url_kwarg = 'username'
+    #model = Perfil
+    #template_name = 'perfil.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(PerfilUsuario, self).get_context_data(**kwargs)
+        context['perfil'] = Perfil.objects.all()
+        return context
 
-def about(request):
-    template = loader.get_template("about.html")
-    documento = template.render()
-    return HttpResponse(documento)
+    def get_object(self):
+	    return get_object_or_404(User, pk=self.request.user.id)
 
+ 
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(**kwargs)
+        context['perfiles'] = Posteo.objects.all()
+        return context
+
+class CargaComentario(CreateView):
+    model = Comentarios
+    template_name = 'comentario.html'
+    fields = ['cuerpo', 'post', 'usuario']
+    form = ComentarioForm
+    
+    def comentario(self, request, *args, **kwargs):
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            post = self.get_object()
+            form.instance.usuario = request.user
+            form.instance.post = post
+            form.save()
+            
+    def get_success_url(self):
+        return reverse('post', kwargs={'url': self.object.post.url})
+ 
 def error(request):
     template = loader.get_template("404.html")
     documento = template.render()
