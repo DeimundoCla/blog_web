@@ -100,3 +100,8 @@ def error403(request):
     template = loader.get_template("403.html")
     documento = template.render()
     return HttpResponse(documento)
+
+def soporte(request):
+    template = loader.get_template("soporte.html")
+    documento = template.render()
+    return HttpResponse(documento)
