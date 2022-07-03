@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from hitcount.views import HitCountDetailView
 from .models import Posteo, Categoria, Perfil, Comentarios
 from .forms import ComentarioForm, PosteoForm
 from usuarios.forms import User

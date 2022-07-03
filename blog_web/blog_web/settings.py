@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'app_blog',
     'usuarios',
     'ckeditor',
-    'hitcount',
 ]
 
 MIDDLEWARE = [
