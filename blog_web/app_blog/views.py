@@ -52,11 +52,11 @@ class Eliminarposteo(DeleteView):
     slug_field = 'url'
     slug_url_kwarg = 'url'
 
-class PerfilUsuario(DetailView):
-    template_name = 'perfil.html'
-    def get_object(self):
-	    return get_object_or_404(User, pk=self.request.user.id)
- 
+def PerfilUsuario(request):
+    user = request.user
+    perfil = Perfil.objects.all()
+    context = {'user': user, 'perfil': perfil}
+    return render(request, 'perfil.html', context)
 
 class AboutView(TemplateView):
     template_name = 'about.html'

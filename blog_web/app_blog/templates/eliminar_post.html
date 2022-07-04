@@ -29,7 +29,7 @@
         </div>
     </article>
     {% else %}
-        {url '403'}
+        <meta http-equiv="Refresh" content="0; url='{%url '403'%}'" />
     {% endif %}
 {% endif %}
 

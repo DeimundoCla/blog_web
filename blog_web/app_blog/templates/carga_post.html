@@ -2,33 +2,34 @@
 {% load static %}
 {% block contenido %}
 {% if user.is_authenticated %}
-<title>Blogsito - Post</title>
-<header class="write">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
+    <title>Blogsito - Post</title>
+    <header class="write">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                </div>
             </div>
         </div>
-    </div>
-</header>
-<!-- Post Content-->
-<article class="mb-4">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <h1> Agregar nuevo post </h1>
-                <h6><form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form.media }}
-                    {{ form.as_p }}
-                </h6>
-                <button class="btn btn-secondary">Post</button>
+    </header>
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <h1> Agregar nuevo post </h1>
+                    <h6><form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{ form.as_p }}
+                    </h6>
+                    <button class="btn btn-secondary">Post</button>
+                </div>
             </div>
         </div>
-    </div>
-</article>
+    </article>
 {% else %}
-{url '403'}
+
+    <meta http-equiv="Refresh" content="0; url='{%url '403'%}'" />
 
 {% endif %}
     

@@ -16,6 +16,6 @@ urlpatterns = [
     path('categorias/<str:cate>/', ViewCategoria, name='categoria'),
     path('carga_categoria/', CargaCategoria.as_view(), name='cargacategoria'),
     path('like/<slug:url>', LikeView, name='like_post'),
-    path('perfil/',PerfilUsuario.as_view(), name='perfiles'),
+    path('perfil/',PerfilUsuario, name='perfiles'),
     path('post/<slug:url>/comentario/', CargaComentario.as_view(), name='comentario'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
