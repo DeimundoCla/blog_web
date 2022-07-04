@@ -1,0 +1,137 @@
+{%extends 'main.html'%}
+{% block title %}{{ posteo.titulo }} {% endblock %}
+{%load static%}
+{%block contenido%}
+<title>Blogsito - Post</title>
+<header class="post">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{ posteo.titulo }}</h1>
+                    <h2 class="subheading"> {{ posteo.subtitulo }} </h2>
+                    <span class="meta">
+                        Posteado por
+                        <a href="#!">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</a>
+                        el {{ posteo.fecha_publicacion }}
+                        <br/>
+                        <br/>
+                        {% if user.is_authenticated %}
+                            <form action="{% url 'like_post' posteo.url %}" method="POST">
+                                {% csrf_token %}
+                                    <button type="submit", name='posteo_id' class="btn btn-primary", value={{ posteo.url }}>Me gusta</button> - Likes {{ likes_totales }}
+                                        {% if user.id == posteo.autor.id %}
+                                            <a href="{% url 'editarpost' posteo.url %}">|Editar post|</a> - <a href="{% url 'eliminarpost' posteo.url  %}">|Borrar|</a>
+                                        {% endif %}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                {{ posteo.contenido|safe }}
+                <img src ="{{ posteo.imagen.url }}" alt="{{ posteo.titulo }}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="container bcontent" >
+        <h3>Sobre el autor</h3>
+        <hr />
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    {% if posteo.autor.perfil.imagen %}
+                    <img class="rounded float-right" src="{{ posteo.autor.perfil.imagen.url }}" width=100% height=70% >
+                    {% else %}
+                    <img class="rounded float-right" src="{% static 'app_blog/assets/img/default-user.jpg' %}" width="50%" height="80%">
+                    {% endif %}
+
+
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</h5>
+                        <p class="card-text">{{ posteo.autor.perfil.info }}</p>
+                        <a href="{%url 'perfiles'%}" class="btn btn-primary">Ver perfil completo</a>                    
+                        <p class="card-text"><small class="text-muted">
+                            <a href="{{ posteo.autor.perfil.instagram_url }}">Instagram</a> | 
+                            <a href=" {{ posteo.autor.perfil.twitter_url }}">Twitter</a> | 
+                            <a href="{{ posteo.autor.perfil.facebook_url }}">Facebook</a> | 
+                            <a href="{{ posteo.autor.perfil.sitio_web }}">Sitio web</a></small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/><br/>
+    <div class="container bcontent">
+        {% if not posteo.comentario.all %}
+                    <h4>No hay comentarios</h4>
+                    {% if user.is_authenticated %}
+                        <a href="{%url 'comentario' posteo.url %}">Comentar</a>
+                    {% else %}
+                        <br/>   
+                        <a href="{%url 'login'%}">Iniciar sesión para comentar</a>
+                    {% endif %}
+        {% else %}
+            {% for x in posteo.comentario.all %}
+                {{ x.usuario }} - {{ x.fecha_publicacion }}<br/><br/>
+                {{ x.cuerpo }}
+                <br/><br/>
+            {% endfor %}
+            {% if user.is_authenticated %}
+                    <br/>
+                    <a href="{%url 'comentario' posteo.url %}">Comentar</a>
+            {% else %}
+                    <br/>   
+                    <a href="{%url 'login'%}">Iniciar sesión para comentar</a>
+            {% endif %}
+         {% endif %}
+    </div>
+
+</article>
+<!-- Footer-->
+<footer class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{%endblock%}
