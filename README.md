@@ -13,3 +13,4 @@ Sección de comentarios con ingreso requerido, botón "me gusta" con contador, t
 Ckeditor
 Pillow
 
+Para ejecutar: manage.py runserver --insecure (para salir de la opción DEBUG y que funcionen las páginas de error 403 - 404 -etc.)
