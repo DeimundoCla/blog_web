@@ -14,33 +14,35 @@
 				<div class="custom-menu">
         </div>
         <!--- USER FOTO -->
-	  		<div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+	  		<div class="img bg-wrap text-center py-4">
 	  			<div class="user-logo">
-            <img class="rounded float-right" src="{{ user.perfil.imagen.url }}" width=100% height=70% >
+            <img class="rounded float-right" src="{{ user.perfil.imagen.url }}" width=100% height=40% >
             
 	  				<h3>{{ user.first_name }} {{ user.last_name }} </h3>
 	  			</div>
 	  		</div>
 
-        <!---------------->
-        <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a href="{%url 'inbox'%}"><span class="fa fa-inbox mr-3"></span> Inbox </a>
-          </li>
-          <li>
-            <a href="{%url 'editar_perfil'%}"><span class="fa fa-user mr-3"></span> Editar Usuario</a>
-          </li>
-          <li>
-            <a href="{%url 'password'%}"><span class="fa fa-cog mr-3"></span> Editar Contraseña</a>
-          </li>
-          <li>
-            <a href="{%url 'soporte'%}"><span class="fa fa-life-ring mr-3"></span> Soporte</a>
-          </li>
-          <li>
-            <a href="{%url 'logout'%}"><span class="fa fa-sign-out mr-3"></span> Cerrar sesion</a>
-          </li>
-        </ul>
-
+       <!---------------->
+       <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="{%url 'inbox'%}"><span class="fa fa-inbox mr-3"></span> Inbox </a>
+        </li>
+        <li>
+          <a href="{%url 'editar_profile'%}"><span class="fa fa-user mr-3"></span>Editar Perfil</a>
+        </li>
+        <li>
+          <a href="{%url 'editar_perfil'%}"><span class="fa fa-cog mr-3"></span> Cuenta</a>
+        </li>
+        <li>
+          <a href="{%url 'password'%}"><span class="fa fa-key mr-3"></span> Editar Contraseña</a>
+        </li>
+        <li>
+          <a href="{%url 'soporte'%}"><span class="fa fa-life-ring mr-3"></span> Soporte</a>
+        </li>
+        <li>
+          <a href="{%url 'logout'%}"><span class="fa fa-sign-out mr-3"></span> Cerrar sesion</a>
+        </li>
+      </ul>
     	</nav>
 
         <!-- Page Content  -->

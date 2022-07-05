@@ -14,33 +14,52 @@
 <div class="container px-4 px-lg-5">
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
-
-
-<!-- CAJA MENSAJES-->
-        {% for message in data %}
-
-          <img class="rounded float-left" src="{{ message.user.perfil.imagen.url }}" width=20% height=10% >
-          --------->
-          <img class="rounded float-right" src="{{ message.recipient.perfil.imagen.url }}" width=20% height=10% >
-
-
-          <h4 class="post-title"> De {{ message.user.first_name }} {{ message.user.last_name }} a {{ message.recipient.first_name }} {{ message.recipient.last_name }}</h4>
-          <br/>
-          <div class="post-preview">
-            <h4 class="post-title"> {{ message.body }} </h4>
+    {% if user.id == from_user.id %}
+    {% for message in data %}
+        <div class="card">
+            <div class="card-header">
+                De {{ message.user.first_name }} {{ message.user.last_name }} a:
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ message.recipient.first_name }} {{ message.recipient.last_name }}</h5>
+              <div class="card-text" style="background-color:powderblue;"> {{ message.body }} </div>
+              <p class="card-text"> {{ message.date|date:'d N G:i'}}</p>
+            </div>
           </div>
-          <div>
-            <p class="post-meta">
-              Enviado el
-              {{ message.date|date:'d N G:i'}}<br/>
-            </p>
-          </div>
-        <hr class="my-4" />
-        {% endfor %}
+    {% endfor %}
       </div>
     </div>  
-</div>
+    {% else %}
+        <h4 class="post-title"> Usted no tiene mensajes</h4>
+    {% endif %}
 
+    <center>
+    <form role="form" method="POST" action="{% url 'send_direct' %}">
+        {% csrf_token %}
+      <article class="media">
+        <h4 class="post-title"> Envíe un mensaje</h4>
+          </p>
+        </figure>
+        <div class="media-content">
+        
+          <input type="select" name="users" value="{{user}}">
+        
+          <div class="field">
+            <p class="control">
+              <textarea class="textarea" name="body" placeholder="Add a comment..."></textarea>
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <button type="submit" name="action" class="button is-info">Send</buttom>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </article>
+      </form>
+    </center>
 
 
 

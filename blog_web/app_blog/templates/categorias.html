@@ -2,11 +2,14 @@
 {% load static %}
 {% block contenido %}
 <title>Blogsito - Categorías</title>
-<header class="post">
+<header class="about">
     <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-left">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <h1>Categoría {{ cate }}</h1>   
+                <div class="page-heading">
+                    <h1>Categoría <br/>
+                        {{ cate }} </h1>
+                </div>
             </div>
         </div>
     </div>

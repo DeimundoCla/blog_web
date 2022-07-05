@@ -41,4 +41,4 @@ class EditarProfile(CreateView):
             form.save()
             
     def get_success_url(self):
-        return reverse('perfil')
+        return reverse('perfil/')
