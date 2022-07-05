@@ -15,28 +15,20 @@ from django.core.paginator import Paginator
 @login_required
 def Inbox(request):
 	messages = Message.get_messages(user=request.user)
-	active_direct = None
-	directs = None
-
-	if messages:
-		message = messages[0]
-		active_direct = message['user'].username
-		directs = Message.objects.filter(user=request.user, recipient=message['user'])
-		directs.update(is_read=True)
-		for message in messages:
-			if message['user'].username == active_direct:
-				message['unread'] = 0
-
+	data = Message.objects.all()
+	from_user = request.user
+	to_user = request.user
 	context = {
-		'directs': directs,
-		'messages': messages,
-		'active_direct': active_direct,
-		}
-
+		'messages':messages,
+		'data':data,
+		'from_user':from_user,
+		'to_user':to_user,
+		'directs_count':checkDirects(request)['directs_count']}
 	template = loader.get_template('direct/direct.html')
-
 	return HttpResponse(template.render(context, request))
 
+
+	
 @login_required
 def UserSearch(request):
 	query = request.GET.get("q")
@@ -57,28 +49,6 @@ def UserSearch(request):
 	template = loader.get_template('direct/search_user.html')
 	
 	return HttpResponse(template.render(context, request))
-
-@login_required
-def Directs(request, username):
-	user = request.user
-	messages = Message.get_messages(user=user)
-	active_direct = username
-	directs = Message.objects.filter(user=user, recipient__username=username)
-	directs.update(is_read=True)
-	for message in messages:
-		if message['user'].username == username:
-			message['unread'] = 0
-
-	context = {
-		'directs': directs,
-		'messages': messages,
-		'active_direct':active_direct,
-	}
-
-	template = loader.get_template('direct/direct.html')
-
-	return HttpResponse(template.render(context, request))
-
 
 @login_required
 def NewConversation(request, username):

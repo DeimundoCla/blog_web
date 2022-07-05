@@ -38,3 +38,9 @@ class Message(models.Model):
 				'unread': Message.objects.filter(user=user, recipient__pk=message['recipient'], is_read=False).count()
 				})
 		return users
+	
+	
+	def get_users(user):
+		sender = Message.objects.filter(user=sender)
+		recipient = Message.objects.filter(user=recipient)
+		return sender, recipient

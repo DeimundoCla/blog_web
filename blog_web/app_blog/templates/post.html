@@ -58,7 +58,8 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{ posteo.autor.first_name }} {{ posteo.autor.last_name }}</h5>
-                        <p class="card-text">{{ posteo.autor.perfil.info }}</p>                   
+                        <p class="card-text">{{ posteo.autor.perfil.info }}</p>
+                        <a href="{%url 'perfiles'%}" class="btn btn-primary">Ver perfil completo</a>                    
                         <p class="card-text"><small class="text-muted">
                             <a href="{{ posteo.autor.perfil.instagram_url }}">Instagram</a> | 
                             <a href=" {{ posteo.autor.perfil.twitter_url }}">Twitter</a> | 
