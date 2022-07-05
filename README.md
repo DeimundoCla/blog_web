@@ -17,4 +17,7 @@ Sección de comentarios con ingreso requerido, botón "me gusta" con contador, t
 
 # Requirements
 Ckeditor
+
+Django-autoslug
+
 Pillow
