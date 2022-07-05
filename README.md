@@ -23,4 +23,4 @@ Django-autoslug
 Pillow
 
 # Video comprobación
-https://youtu.be/_-zjtHu10x0
+https://youtu.be/8FKZm1RtBn4
