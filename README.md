@@ -1,5 +1,9 @@
 # blog_web
 
+# Trabajo comprendido por
+•Claudio Deimundo
+•Alan Saja
+
 # Funcionalidades
 
 -Posteos: creación de nuevos posteos con foto con texto enriquecido, edición y eliminación.
@@ -12,5 +16,3 @@ Sección de comentarios con ingreso requerido, botón "me gusta" con contador, t
 # Requirements
 Ckeditor
 Pillow
-
-Para ejecutar: manage.py runserver --insecure (para salir de la opción DEBUG y que funcionen las páginas de error 403 - 404 -etc.)
